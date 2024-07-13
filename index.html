@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego del Ártico</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Juego del Ártico</h1>
+        <button id="start-btn" class="start-btn">Iniciar Juego</button>
+        <button id="reset-btn" class="reset-btn hide">Reiniciar Juego</button>
+        <div id="question-container" class="hide">
+            <div id="question">Pregunta</div>
+            <div class="btn-container">
+                <button class="btn" id="btn1"></button>
+                <button class="btn" id="btn2"></button>
+                <button class="btn" id="btn3"></button>
+                <button class="btn" id="btn4"></button>
+            </div>
+            <div id="message" class="message"></div>
+        </div>
+        <div id="score-container" class="hide">
+            <span id="score">Puntuación: 0</span>
+            <span id="time">Tiempo: 25</span>
+        </div>
+    </div>
+    <audio id="correct-sound" src="sounds/correct.mp3"></audio>
+    <audio id="incorrect-sound" src="sounds/incorrect.mp3"></audio>
+    <audio id="lose-sound" src="sounds/lose.mp3"></audio>
+    <audio id="timeout-sound" src="sounds/timeout.mp3"></audio>
+    <audio id="win-sound" src="sounds/win.mp3"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
