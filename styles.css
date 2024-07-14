@@ -1,54 +1,83 @@
 body {
     font-family: Arial, sans-serif;
-    background: #e0f7fa;
+    background-image: url('img/background.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
 }
 
 .game-container {
     text-align: center;
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 90%;
 }
 
-h1 {
+h1, h2 {
     color: #00796b;
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 15px;
+    color: #333;
 }
 
 .btn-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
     margin-top: 20px;
 }
 
-.btn, .start-btn, .reset-btn {
+.btn, .start-btn {
     background: #00796b;
     color: #ffffff;
     border: none;
-    padding: 10px 20px;
-    margin: 5px;
+    padding: 12px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    transition: background 0.3s ease;
 }
 
-.btn:hover, .start-btn:hover, .reset-btn:hover {
+.btn:hover, .start-btn:hover {
     background: #004d40;
 }
 
 #score-container {
     margin-top: 20px;
     font-size: 18px;
+    display: flex;
+    justify-content: space-between;
 }
 
 #score, #time {
-    display: block;
-    margin: 5px 0;
+    background: #e0f2f1;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .hide {
     display: none;
+}
+
+#question {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #00796b;
+}
+
+#final-score, #congratulations {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #00796b;
 }

@@ -56,37 +56,39 @@ let score = 0;
 let time = 60;
 let timer;
 
+const startScreen = document.getElementById('start-screen');
+const gameScreen = document.getElementById('game-screen');
+const endScreen = document.getElementById('end-screen');
 const startButton = document.getElementById('start-btn');
-const resetButton = document.getElementById('reset-btn');
+const playAgainButton = document.getElementById('play-again-btn');
 const questionContainer = document.getElementById('question-container');
 const buttons = document.querySelectorAll('.btn');
-const scoreContainer = document.getElementById('score-container');
 const scoreElement = document.getElementById('score');
 const timeElement = document.getElementById('time');
+const finalScoreElement = document.getElementById('final-score');
+const congratulationsElement = document.getElementById('congratulations');
 const correctSound = document.getElementById('correct-sound');
 const incorrectSound = document.getElementById('incorrect-sound');
-const loseSound = document.getElementById('lose-sound');
 const timeoutSound = document.getElementById('timeout-sound');
-const winSound = document.getElementById('win-sound');
 
 startButton.addEventListener('click', startGame);
-resetButton.addEventListener('click', resetGame);
+playAgainButton.addEventListener('click', startGame);
 
 function startGame() {
-    startButton.classList.add('hide');
-    resetButton.classList.remove('hide');
-    questionContainer.classList.remove('hide');
-    scoreContainer.classList.remove('hide');
+    startScreen.classList.add('hide');
+    endScreen.classList.add('hide');
+    gameScreen.classList.remove('hide');
     currentQuestionIndex = 0;
-    scoreElement.innerText = `Puntuación: ${score}`;
-    timeElement.innerText = `Tiempo: ${time}`;
+    score = 0;
+    time = 60;
+    updateScoreAndTime();
     setNextQuestion();
     timer = setInterval(updateTime, 1000);
 }
 
 function setNextQuestion() {
     resetState();
-    showQuestion(questions[currentQuestionIndex]);
+    showQuestion(questions[Math.floor(Math.random() * questions.length)]);
 }
 
 function showQuestion(question) {
@@ -94,7 +96,7 @@ function showQuestion(question) {
     questionElement.innerText = question.question;
     buttons.forEach((button, index) => {
         button.innerText = question.answers[index];
-        button.onclick = () => selectAnswer(button.innerText, question.correct);
+        button.onclick = () => selectAnswer(button, question.correct);
     });
 }
 
@@ -105,72 +107,57 @@ function resetState() {
     });
 }
 
-function selectAnswer(selected, correct) {
-    if (selected === correct) {
-        score++;
+function selectAnswer(selectedButton, correct) {
+    const isCorrect = selectedButton.innerText === correct;
+    if (isCorrect) {
+        score = Math.max(0, score + 1);
         correctSound.play();
-        scoreElement.innerText = `Puntuación: ${score}`;
-        checkGameStatus();
     } else {
-        score--;
+        score = Math.max(0, score - 1);
         incorrectSound.play();
-        scoreElement.innerText = `Puntuación: ${score}`;
-        buttons.forEach(button => {
-            if (button.innerText === correct) {
-                button.classList.add('correct');
-            } else if (button.innerText === selected) {
-                button.classList.add('wrong');
-            }
-        });
-        setTimeout(() => {
-            checkGameStatus();
-        }, 5000); // Espera de 5 segundos antes de la siguiente pregunta
     }
-}
-
-function checkGameStatus() {
-    if (score >= 10) {
-        clearInterval(timer);
-        winSound.play();
-        alert('¡Ganaste!');
-        resetGame();
-    } else if (score <= -10) {
-        clearInterval(timer);
-        loseSound.play();
-        alert('Perdiste. Inténtalo de nuevo.');
-        resetGame();
-    } else {
-        currentQuestionIndex++;
-        if (currentQuestionIndex < questions.length) {
-            setNextQuestion();
-        } else {
-            alert('¡Terminaste el juego!');
-            resetGame();
+    updateScoreAndTime();
+    buttons.forEach(button => {
+        button.disabled = true;
+        if (button.innerText === correct) {
+            button.classList.add('correct');
+        } else if (button === selectedButton) {
+            button.classList.add('wrong');
         }
-    }
+    });
+    setTimeout(setNextQuestion, 1000);
 }
 
 function updateTime() {
     time--;
-    timeElement.innerText = `Tiempo: ${time}`;
+    updateScoreAndTime();
     if (time <= 0) {
-        clearInterval(timer);
-        timeoutSound.play();
-        alert('Se acabó el tiempo. Inténtalo de nuevo.');
-        resetGame();
+        endGame();
     }
 }
 
-function resetGame() {
-    clearInterval(timer);
-    startButton.innerText = 'Iniciar Juego';
-    startButton.classList.remove('hide');
-    resetButton.classList.add('hide');
-    questionContainer.classList.add('hide');
-    scoreContainer.classList.add('hide');
-    currentQuestionIndex = 0;
-    score = 0;
-    time = 25;
+function updateScoreAndTime() {
     scoreElement.innerText = `Puntuación: ${score}`;
     timeElement.innerText = `Tiempo: ${time}`;
+}
+
+function endGame() {
+    clearInterval(timer);
+    timeoutSound.play();
+    gameScreen.classList.add('hide');
+    endScreen.classList.remove('hide');
+    finalScoreElement.innerText = `Tu puntuación final es: ${score}`;
+    congratulationsElement.innerText = getCongratulatoryMessage(score);
+}
+
+function getCongratulatoryMessage(score) {
+    if (score >= 15) {
+        return "¡Excelente! Eres un experto en el Ártico.";
+    } else if (score >= 10) {
+        return "¡Muy bien! Tienes un buen conocimiento del Ártico.";
+    } else if (score >= 5) {
+        return "Buen intento. Sigue aprendiendo sobre el Ártico.";
+    } else {
+        return "No te desanimes. ¡Inténtalo de nuevo para mejorar tu puntuación!";
+    }
 }
