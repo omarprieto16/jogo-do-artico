@@ -48,6 +48,56 @@ const questions = [
         question: "¿Qué especie de oso vive en el Ártico?",
         answers: ["Oso panda", "Oso pardo", "Oso polar", "Oso negro"],
         correct: "Oso polar"
+    },
+    {
+        question: "¿Qué animal marino grande vive en el Ártico?",
+        answers: ["Ballena", "Tiburón", "Delfín", "Pulpo"],
+        correct: "Ballena"
+    },
+    {
+        question: "¿Qué pueblo indígena vive en el Ártico?",
+        answers: ["Inuit", "Mayas", "Incas", "Aztecas"],
+        correct: "Inuit"
+    },
+    {
+        question: "¿Qué significa 'Ártico' en griego?",
+        answers: ["Oso", "Frío", "Norte", "Hielo"],
+        correct: "Oso"
+    },
+    {
+        question: "¿Qué animal del Ártico cambia de color en invierno?",
+        answers: ["Zorro ártico", "Oso polar", "Foca", "Pingüino"],
+        correct: "Zorro ártico"
+    },
+    {
+        question: "¿Cuántos meses del año el sol no se pone en el Ártico?",
+        answers: ["3 meses", "6 meses", "9 meses", "12 meses"],
+        correct: "3 meses"
+    },
+    {
+        question: "¿Qué animal del Ártico tiene colmillos largos?",
+        answers: ["Morsa", "Foca", "Pingüino", "Ballena"],
+        correct: "Morsa"
+    },
+    {
+        question: "¿Qué tipo de hielo flota en el océano Ártico?",
+        answers: ["Iceberg", "Glaciar", "Nieve", "Escarcha"],
+        correct: "Iceberg"
+    },
+    {
+        question: "¿Qué animal del Ártico puede nadar y caminar?",
+        answers: ["Oso polar", "Ballena", "Pingüino", "Foca"],
+        correct: "Oso polar"
+    },
+    {
+        question: "¿Qué instrumento tradicional usan los Inuit para cazar?",
+        answers: ["Arpón", "Arco y flecha", "Red", "Trampa"],
+        correct: "Arpón"
+    },
+    {
+        question: "¿Qué tipo de casa tradicional construyen los Inuit?",
+        answers: ["Iglú", "Tipi", "Cabaña", "Yurta"],
+        correct: "Iglú"
     }
 ];
 
