@@ -98,7 +98,52 @@ const questions = [
         question: "¿Qué tipo de casa tradicional construyen los Inuit?",
         answers: ["Iglú", "Tipi", "Cabaña", "Yurta"],
         correct: "Iglú"
-    }
+    },
+    {
+        question: "¿Qué tipo de hielo cubre la mayor parte del Ártico?",
+        answers: ["Hielo marino", "Hielo terrestre", "Hielo glacial", "Hielo de agua dulce"],
+        correct: "Hielo marino"
+    },
+    {
+        question: "¿Cuál es el nombre del mar situado al norte de Alaska?",
+        answers: ["Mar de Beaufort", "Mar del Norte", "Mar Báltico", "Mar Rojo"],
+        correct: "Mar de Beaufort"
+    },
+    {
+        question: "¿Qué país tiene la mayor parte del territorio dentro del Círculo Polar Ártico?",
+        answers: ["Rusia", "Estados Unidos", "Dinamarca", "Suecia"],
+        correct: "Rusia"
+    },
+    {
+        question: "¿Qué tipo de aves migran al Ártico para anidar en verano?",
+        answers: ["Gaviotas", "Pingüinos", "Aves marinas", "Patos"],
+        correct: "Aves marinas"
+    },
+    {
+        question: "¿Cuál es la capital de Groenlandia?",
+        answers: ["Nuuk", "Reykjavik", "Oslo", "Helsinki"],
+        correct: "Nuuk"
+    },
+    {
+        question: "¿Qué es el permafrost?",
+        answers: ["Una capa de suelo permanentemente congelada", "Un tipo de ave ártica", "Un fenómeno meteorológico", "Una planta ártica"],
+        correct: "Una capa de suelo permanentemente congelada"
+    },
+    {
+        question: "¿Qué explorador es famoso por llegar al Polo Norte en 1909?",
+        answers: ["Robert Peary", "Christopher Columbus", "Marco Polo", "James Cook"],
+        correct: "Robert Peary"
+    },
+    {
+        question: "¿Qué planta puede encontrarse en el Ártico?",
+        answers: ["Musgo", "Árboles de pino", "Orquídeas", "Cactus"],
+        correct: "Musgo"
+    },
+    {
+        question: "¿Qué es la 'Noche Polar'?",
+        answers: ["Un período de oscuridad continua durante el invierno", "Un fenómeno de aurora boreal", "Un festival de invierno", "Un tipo de tormenta ártica"],
+        correct: "Un período de oscuridad continua durante el invierno"
+    },
 ];
 
 let currentQuestionIndex = 0;
