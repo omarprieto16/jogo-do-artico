@@ -105,6 +105,7 @@ let currentQuestionIndex = 0;
 let score = 0;
 let time = 60;
 let timer;
+let usedQuestions = [];
 
 const startScreen = document.getElementById('start-screen');
 const gameScreen = document.getElementById('game-screen');
@@ -131,6 +132,7 @@ function startGame() {
     currentQuestionIndex = 0;
     score = 0;
     time = 60;
+    usedQuestions = [];
     updateScoreAndTime();
     setNextQuestion();
     timer = setInterval(updateTime, 1000);
@@ -138,7 +140,16 @@ function startGame() {
 
 function setNextQuestion() {
     resetState();
-    showQuestion(questions[Math.floor(Math.random() * questions.length)]);
+    if (usedQuestions.length === questions.length) {
+        usedQuestions = []; // Reset if all questions have been used
+    }
+    let questionIndex;
+    do {
+        questionIndex = Math.floor(Math.random() * questions.length);
+    } while (usedQuestions.includes(questionIndex));
+    
+    usedQuestions.push(questionIndex);
+    showQuestion(questions[questionIndex]);
 }
 
 function showQuestion(question) {
